@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top 5 Snipers — 2025–26</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rink-dark:#081824;
+    --rink-navy:#0e2635;
+    --rink-panel:#102c3d;
+    --ice:#e8f2f5;
+    --ice-dim:#9fb6c2;
+    --cyan:#4fd6e8;
+    --amber:#f2994a;
+    --red:#e4572e;
+    --line:rgba(232,242,245,0.12);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1200px 600px at 15% -10%, rgba(79,214,232,0.08), transparent 60%),
+      var(--rink-dark);
+    color:var(--ice);
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:64px 28px 100px;}
+
+  /* header */
+  header{margin-bottom:64px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--cyan);margin-bottom:16px;
+  }
+  h1{
+    font-family:'Oswald',sans-serif;
+    font-weight:700;
+    font-size:clamp(40px,7vw,76px);
+    line-height:0.95;
+    margin:0 0 20px;
+    letter-spacing:-0.01em;
+    text-transform:uppercase;
+  }
+  header p{
+    max-width:560px;color:var(--ice-dim);font-size:16px;margin:0;
+  }
+
+  /* the rack */
+  .rack-section{margin-bottom:80px;}
+  .section-label{
+    font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:0.14em;
+    text-transform:uppercase;color:var(--ice-dim);
+    border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:32px;
+    display:flex;justify-content:space-between;align-items:baseline;
+  }
+  .rack{
+    background:linear-gradient(180deg, var(--rink-panel), var(--rink-navy));
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:36px 24px 20px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:8px;
+  }
+  .stick-slot{display:flex;flex-direction:column;align-items:center;}
+  .stick-slot svg{width:100%;height:260px;}
+  .stick-name{
+    font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:0.03em;
+    text-transform:uppercase;margin-top:8px;text-align:center;
+  }
+  .stick-team{
+    font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ice-dim);
+    letter-spacing:0.08em;
+  }
+  .rack-note{
+    font-size:12px;color:var(--ice-dim);margin-top:24px;
+    border-top:1px solid var(--line);padding-top:16px;
+  }
+
+  .net-slot{display:flex;flex-direction:column;align-items:center;}
+  .net-slot svg{width:100%;height:170px;}
+  .net-name{
+    font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:0.03em;
+    text-transform:uppercase;margin-top:8px;text-align:center;
+  }
+  .net-count{
+    font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ice-dim);
+    letter-spacing:0.08em;
+  }
+
+  /* legend */
+  .legend{
+    display:flex;gap:20px;flex-wrap:wrap;
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ice-dim);
+  }
+  .legend span.dot{
+    display:inline-block;width:8px;height:8px;border-radius:50%;
+    margin-right:6px;position:relative;top:-1px;
+  }
+
+  /* player cards */
+  .cards{display:flex;flex-direction:column;gap:2px;}
+  .card{
+    background:var(--rink-panel);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:32px;
+    display:grid;
+    grid-template-columns:64px 1fr 1.3fr;
+    gap:28px;
+    align-items:start;
+  }
+  .rank{
+    font-family:'Oswald',sans-serif;font-weight:700;font-size:44px;
+    color:transparent;
+    -webkit-text-stroke:1.5px var(--cyan);
+    line-height:1;
+  }
+  .card h2{
+    font-family:'Oswald',sans-serif;font-size:26px;text-transform:uppercase;
+    margin:0 0 4px;font-weight:600;letter-spacing:0.01em;
+  }
+  .card .team{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--amber);
+    letter-spacing:0.06em;margin-bottom:18px;
+  }
+  .stat-grid{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:14px 12px;margin-bottom:8px;
+  }
+  .stat-grid.secondary{margin-bottom:18px;padding-top:14px;border-top:1px dashed var(--line);}
+  .stat{border-left:2px solid var(--line);padding-left:10px;}
+  .stat .num{
+    font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:600;color:var(--ice);
+    display:block;
+  }
+  .stat .lbl{
+    font-size:10px;color:var(--ice-dim);text-transform:uppercase;letter-spacing:0.08em;
+  }
+  .stick-line{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--cyan);
+    margin-bottom:6px;
+  }
+  .curve-line{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ice-dim);
+    margin-bottom:14px;
+  }
+  .blurb{font-size:14px;color:var(--ice-dim);max-width:60ch;}
+  .blurb b{color:var(--ice);font-weight:500;}
+
+  footer{
+    margin-top:56px;padding-top:24px;border-top:1px solid var(--line);
+    font-size:12px;color:var(--ice-dim);max-width:640px;
+  }
+
+  /* 30-goal list */
+  .goal-table{width:100%;border-collapse:collapse;margin-bottom:8px;}
+  .goal-table th{
+    text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10px;
+    text-transform:uppercase;letter-spacing:0.08em;color:var(--ice-dim);
+    padding:8px 10px;border-bottom:1px solid var(--line);
+  }
+  .goal-table td{
+    padding:8px 10px;font-size:13px;border-bottom:1px solid var(--line);
+  }
+  .goal-table td.num, .goal-table th.num{font-family:'IBM Plex Mono',monospace;text-align:right;}
+  .goal-table tr.top5 td{color:var(--cyan);}
+  .badge{
+    display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9px;
+    background:rgba(79,214,232,0.12);color:var(--cyan);border:1px solid rgba(79,214,232,0.3);
+    border-radius:3px;padding:1px 5px;margin-left:6px;letter-spacing:0.05em;
+  }
+  .scroll-table{max-height:520px;overflow-y:auto;border:1px solid var(--line);border-radius:6px;padding:0 4px;}
+
+  .table-controls{
+    display:flex;align-items:flex-end;gap:20px;margin-bottom:18px;flex-wrap:wrap;
+  }
+  .table-hint{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ice-dim);
+    letter-spacing:0.04em;padding-bottom:10px;
+  }
+  .goal-table th.sortable{cursor:pointer;user-select:none;position:relative;}
+  .goal-table th.sortable:hover{color:var(--cyan);}
+  .sort-arrow{display:inline-block;margin-left:4px;font-size:9px;color:var(--cyan);}
+  .goal-table tr.filtered-out{display:none;}
+
+  /* shot-zone breakdown */
+  .zone-legend{
+    display:flex;gap:20px;flex-wrap:wrap;margin-bottom:24px;
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ice-dim);
+  }
+  .zone-legend span.dot{
+    display:inline-block;width:8px;height:8px;border-radius:50%;
+    margin-right:6px;position:relative;top:-1px;
+  }
+  .zone-rows{display:flex;flex-direction:column;gap:18px;}
+  .zone-row{display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:center;}
+  .zone-name{
+    font-family:'Oswald',sans-serif;font-size:14px;text-transform:uppercase;
+    letter-spacing:0.02em;
+  }
+  .zone-bar{
+    display:flex;height:20px;border-radius:3px;overflow:hidden;
+    border:1px solid var(--line);
+  }
+  .zone-seg{
+    height:100%;display:flex;align-items:center;justify-content:center;
+    font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--rink-dark);
+    font-weight:600;
+  }
+  @media (max-width:820px){
+    .zone-row{grid-template-columns:1fr;gap:6px;}
+  }
+
+  /* drill callout inside player cards */
+  .drill{
+    margin-top:14px;padding:10px 12px;
+    background:rgba(79,214,232,0.07);
+    border-left:2px solid var(--cyan);
+    border-radius:0 4px 4px 0;
+    font-size:13px;color:var(--ice-dim);max-width:60ch;
+  }
+  .drill b{color:var(--cyan);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;}
+
+  /* stick-fit calculator */
+  .calc-panel{
+    background:linear-gradient(180deg, var(--rink-panel), var(--rink-navy));
+    border:1px solid var(--line);border-radius:6px;
+    padding:32px;display:grid;grid-template-columns:1fr 1fr;gap:32px;
+  }
+  .calc-inputs{display:flex;flex-direction:column;gap:18px;}
+  .calc-field label{
+    display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;
+    text-transform:uppercase;letter-spacing:0.08em;color:var(--ice-dim);margin-bottom:8px;
+  }
+  .calc-field input[type="number"], .calc-field select{
+    width:100%;background:var(--rink-dark);border:1px solid var(--line);
+    color:var(--ice);border-radius:4px;padding:10px 12px;font-family:'Inter',sans-serif;
+    font-size:14px;
+  }
+  .calc-field input[type="range"]{width:100%;accent-color:var(--cyan);}
+  .calc-field .range-val{
+    font-family:'IBM Plex Mono',monospace;color:var(--cyan);font-size:13px;margin-left:8px;
+  }
+  .calc-output{
+    border-left:1px solid var(--line);padding-left:32px;
+    display:flex;flex-direction:column;gap:20px;justify-content:center;
+  }
+  .calc-result .num{
+    font-family:'Oswald',sans-serif;font-weight:700;font-size:34px;color:var(--ice);
+    display:block;line-height:1;
+  }
+  .calc-result .lbl{
+    font-size:11px;color:var(--ice-dim);text-transform:uppercase;letter-spacing:0.08em;
+  }
+  .calc-match{
+    font-size:13px;color:var(--ice-dim);border-top:1px solid var(--line);padding-top:16px;
+  }
+  .calc-match b{color:var(--amber);font-weight:500;}
+  .calc-drill{
+    font-size:13px;color:var(--ice-dim);
+  }
+  .calc-drill b{color:var(--cyan);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;display:block;margin-bottom:4px;}
+
+  /* curve cheat sheet */
+  .curve-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;}
+  .curve-card{
+    background:var(--rink-panel);border:1px solid var(--line);border-radius:6px;padding:20px 22px;
+  }
+  .curve-card h3{
+    font-family:'Oswald',sans-serif;font-size:16px;text-transform:uppercase;margin:0 0 6px;
+    color:var(--cyan);font-weight:600;letter-spacing:0.02em;
+  }
+  .curve-card .used-by{
+    font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--amber);
+    letter-spacing:0.06em;margin-bottom:10px;text-transform:uppercase;
+  }
+  .curve-card p{font-size:13px;color:var(--ice-dim);margin:0;max-width:52ch;}
+
+  @media (max-width:820px){
+    .rack{grid-template-columns:repeat(3,1fr);row-gap:28px;}
+    .card{grid-template-columns:1fr;}
+    .rank{font-size:32px;}
+    .stat-grid{grid-template-columns:repeat(3,1fr);}
+    .stat-grid.secondary{grid-template-columns:repeat(3,1fr);}
+    .calc-panel{grid-template-columns:1fr;}
+    .calc-output{border-left:none;padding-left:0;border-top:1px solid var(--line);padding-top:24px;}
+    .curve-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:520px){
+    .rack{grid-template-columns:repeat(2,1fr);}
+  }
+
+  @media (prefers-reduced-motion:no-preference){
+    .card, .stick-slot{transition:transform 0.2s ease, border-color 0.2s ease;}
+    .card:hover{transform:translateY(-2px);border-color:var(--cyan);}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">2025–26 NHL Season · Goal-scoring leaders</div>
+    <h1>Five sticks,<br>five ways to score</h1>
+    <p>Nathan MacKinnon led the league with 53 goals, ahead of Cole Caufield (51), Connor McDavid (48), Kirill Kaprizov (45), and Nikita Kucherov (44). Same job, very different tools and technique.</p>
+  </header>
+
+  <section class="rack-section">
+    <div class="section-label">
+      <span>The rack — stick length &amp; grip, to scale</span>
+      <span>by playing style</span>
+    </div>
+    <div class="rack" id="rack"></div>
+    <div class="legend" style="margin-top:18px;">
+      <span><span class="dot" style="background:var(--cyan);"></span>Top hand (butt end)</span>
+      <span><span class="dot" style="background:var(--amber);"></span>Bottom hand (grip span)</span>
+    </div>
+    <p class="rack-note">Stick length is scaled from each player's height using the standard fitting rule (knob to chin, roughly 8" shorter than height). Grip span — how far apart the hands sit — isn't a stat the NHL tracks, so it's stylized here: shooters who load up for power (MacKinnon, Kaprizov) tend to spread their hands wider for leverage, while quick-release players (Caufield, Kucherov, McDavid) keep their hands closer together for a faster snap. Treat it as illustrative, not measured.</p>
+  </section>
+
+  <section>
+    <div class="section-label">
+      <span>The five</span>
+      <span>Full shot profile, not just the box score</span>
+    </div>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section class="rack-section">
+    <div class="section-label">
+      <span>Volume vs. accuracy</span>
+      <span>Shots on goal &amp; shooting %</span>
+    </div>
+    <div class="rack" id="shotProfile" style="grid-template-columns:1fr 1fr;padding:28px 28px 20px;"></div>
+    <p class="rack-note">Kaprizov scores on the smallest number of shots by a wide margin — he shoots less often but picks his spots below the circles. MacKinnon and Caufield sit at the other end, generating the highest shot volume in the group and still finishing near the top of the shooting-percentage list.</p>
+  </section>
+
+  <section class="rack-section">
+    <div class="section-label">
+      <span>Where the goals come from</span>
+      <span>Zone breakdown, top 5</span>
+    </div>
+    <div class="zone-legend">
+      <span><span class="dot" style="background:var(--cyan);"></span>Slot / inner</span>
+      <span><span class="dot" style="background:var(--amber);"></span>Circle &amp; half-wall</span>
+      <span><span class="dot" style="background:var(--red);"></span>Point &amp; rush</span>
+    </div>
+    <div class="zone-rows" id="zoneRows"></div>
+    <p class="rack-note" style="margin-top:20px;">Like the grip span in the rack above, these zone splits aren't an official league stat — they're a stylized read on each player's game built from their shot profile and playing style, not a tracked shot-location dataset. Read it as "where this player's game lives," not a precise chart.</p>
+  </section>
+
+  <section class="rack-section">
+    <div class="section-label">
+      <span>Every goal, mapped</span>
+      <span>on-net finish, all season</span>
+    </div>
+    <div class="rack" id="netRack"></div>
+    <p class="rack-note">This isn't a real tracked shot chart — the NHL doesn't publish public pinpoint coordinates for every goal. Each dot is a simulated finish, placed using each player's known finishing tendencies (top-corner shooter, five-hole specialist, low-corner grinder) from the zone breakdown above, so the overall shape of the cluster is representative even though no single dot maps to an actual goal.</p>
+  </section>
+
+  <section class="rack-section">
+    <div class="section-label">
+      <span>Build your shot</span>
+      <span>Stick length &amp; flex, fit to you</span>
+    </div>
+    <div class="calc-panel">
+      <div class="calc-inputs">
+        <div class="calc-field">
+          <label for="calcHeight">Your height <span class="range-val" id="heightVal"></span></label>
+          <input type="range" id="calcHeight" min="54" max="78" value="66" step="1">
+        </div>
+        <div class="calc-field">
+          <label for="calcWeight">Your weight <span class="range-val" id="weightVal"></span></label>
+          <input type="range" id="calcWeight" min="90" max="220" value="140" step="1">
+        </div>
+        <div class="calc-field">
+          <label for="calcStyle">Shot you're building</label>
+          <select id="calcStyle">
+            <option value="quick">Quick-release wrister</option>
+            <option value="power">Power / slap shot</option>
+            <option value="balanced" selected>Balanced / all-around</option>
+          </select>
+        </div>
+      </div>
+      <div class="calc-output" id="calcOutput"></div>
+    </div>
+    <p class="rack-note">Uses the same knob-to-chin fitting rule as the rack above (stick ≈ height − 8", worn on skates), plus a common starting-point flex guideline of roughly half your body weight, nudged softer for quick-release shots and stiffer for power shots. These are starting points for a fitting, not a guarantee — get on the ice and adjust from there, and a shop can cut a stick down but can't add length back.</p>
+  </section>
+
+  <section style="margin-bottom:80px;">
+    <div class="section-label">
+      <span>Curve families</span>
+      <span>what each one is actually good for</span>
+    </div>
+    <div class="curve-grid">
+      <div class="curve-card">
+        <h3>Deep toe curve</h3>
+        <div class="used-by">e.g. MacKinnon's P14-style</div>
+        <p>Opens the blade face for lifting the puck quickly off the toe — good for tight-space snap shots and toe-drags. Trade-off: passes and one-timers off the toe are less predictable.</p>
+      </div>
+      <div class="curve-card">
+        <h3>Max-height / shaved toe</h3>
+        <div class="used-by">e.g. Caufield's P92</div>
+        <p>Puts a large, consistent curve low on the blade for a quick, accurate release from anywhere on the blade — built for shooters who get the puck off in one motion.</p>
+      </div>
+      <div class="curve-card">
+        <h3>Squared / closed face</h3>
+        <div class="used-by">e.g. McDavid's P92 variant</div>
+        <p>Flatter, more square blade face that's forgiving for receiving passes and handling the puck at speed — a good all-around choice while you're still building a shot.</p>
+      </div>
+      <div class="curve-card">
+        <h3>Mid-curve (P28/P86 family)</h3>
+        <div class="used-by">e.g. Kucherov</div>
+        <p>Curve sits in the middle of the blade, balancing backhand control with a reliable forehand release — a versatile pick for a playmaking, pass-first game.</p>
+      </div>
+    </div>
+    <p class="rack-note">Curve is the piece of equipment most worth trying in person before you buy — grip a few patterns off a store rack and see which one feels like it's already lined up with a natural wrist shot.</p>
+  </section>
+
+  <section style="margin-bottom:80px;">
+    <div class="section-label">
+      <span>Every 30-goal scorer, 2025–26</span>
+      <span>43 players</span>
+    </div>
+    <div class="table-controls">
+      <div class="calc-field" style="max-width:220px;">
+        <label for="teamFilter">Filter by team</label>
+        <select id="teamFilter"><option value="all">All teams</option></select>
+      </div>
+      <span class="table-hint">Click a column header to sort</span>
+    </div>
+    <div class="scroll-table">
+      <table class="goal-table" id="goalTable">
+        <thead><tr>
+          <th data-sort="rank" class="sortable">#<span class="sort-arrow"></span></th>
+          <th data-sort="name" class="sortable">Player<span class="sort-arrow"></span></th>
+          <th data-sort="team" class="sortable">Team<span class="sort-arrow"></span></th>
+          <th data-sort="goals" class="num sortable">Goals<span class="sort-arrow"></span></th>
+          <th data-sort="points" class="num sortable">Points<span class="sort-arrow"></span></th>
+          <th data-sort="flex" class="num sortable">Flex<span class="sort-arrow"></span></th>
+          <th data-sort="grip" class="sortable">Grip style<span class="sort-arrow"></span></th>
+        </tr></thead>
+        <tbody id="goalTableBody"></tbody>
+      </table>
+    </div>
+    <p class="rack-note" style="margin-top:16px;">Goal and point totals are final regular-season figures and are reliable. Flex isn't tracked league-wide, so it's only shown where a documented number exists — a dash means it isn't publicly listed. "Grip style" is a stylized label inferred from each player's goals-to-points ratio (not a measured hand position): <b>Quick-release</b> = goals make up most of their points (hands run closer together for a fast snap), <b>Playmaker-lean</b> = assists dominate (more reach and control for passing), <b>Balanced</b> = a fairly even split.</p>
+  </section>
+
+</div>
+
+<script>
+const players = [
+  {
+    rank:1, name:"Nathan MacKinnon", team:"COL · C", age:30, heightIn:72, weight:200, goals:53, points:127, flex:95,
+    shots:301, shPct:17.6, ppg:14, gwg:9, toi:"21:38", streak:"11 goals over an 8-game run in February",
+    zones:{slot:35, circle:30, point:35},
+    finish:{top:58, five:14, low:28},
+    stick:"Bauer Nexus SYNC / Proto-R", curve:"Custom P14-style, deep toe hook",
+    grip:0.52, color:"var(--red)",
+    blurb:"<b>Speed and power in one package.</b> A load-and-release shooter who beats goalies from distance off the rush, backed by a real two-way engine at 5-on-5 — not just a power-play specialist.",
+    drill:"Full-speed slap shots and one-timers off a moving pass at the top of the circle — build the shot into your stride instead of shooting from a stop."
+  },
+  {
+    rank:2, name:"Cole Caufield", team:"MTL · RW", age:25, heightIn:68, weight:175, goals:51, points:88, flex:80,
+    shots:268, shPct:19.0, ppg:16, gwg:8, toi:"18:12", streak:"A 13-goal December, the hottest single month of the five",
+    zones:{slot:55, circle:35, point:10},
+    finish:{top:62, five:10, low:28},
+    stick:"Bauer Pulse", curve:"Max-height P92, shaved toe",
+    grip:0.32, color:"var(--amber)",
+    blurb:"<b>The purest release in the group.</b> Smallest and lightest of the five, but his quick, accurate wrister finds seams other shots can't — a finisher who needs the puck delivered, then rarely misses.",
+    drill:"Catch-and-release reps: one-touch wrist shots off a pass, close to the body, no extra stickhandle before the shot. Speed of release beats power here."
+  },
+  {
+    rank:3, name:"Connor McDavid", team:"EDM · C", age:29, heightIn:73, weight:194, goals:48, points:138, flex:85,
+    shots:255, shPct:18.8, ppg:11, gwg:7, toi:"22:04", streak:"A 20-game point streak spanning November into January",
+    zones:{slot:45, circle:25, point:30},
+    finish:{top:45, five:26, low:29},
+    stick:"CCM Jetspeed FT8 Pro", curve:"Custom P92 variant, squared blade face",
+    grip:0.38, color:"var(--cyan)",
+    blurb:"<b>Still the best skater and puck-handler alive.</b> Led the league in points and assists — his scoring is a byproduct of speed and vision more than a heavy shot.",
+    drill:"Puck protection and edge work at top speed, then a shot off the toe with a defender on your back — the shot only needs to be good enough once you've won the race."
+  },
+  {
+    rank:4, name:"Kirill Kaprizov", team:"MIN · LW", age:28, heightIn:70, weight:202, goals:45, points:89, flex:87,
+    shots:214, shPct:21.0, ppg:12, gwg:8, toi:"19:47", streak:"9 goals in 6 games right after returning from injury",
+    zones:{slot:60, circle:25, point:15},
+    finish:{top:32, five:34, low:34},
+    stick:"Bauer Nexus SYNC (2N Pro build)", curve:"P92 pattern",
+    grip:0.45, color:"var(--red)",
+    blurb:"<b>A power forward with real skill.</b> Heaviest of the five despite not being the tallest — protects pucks below the circles and beats defenders one-on-one in tight areas.",
+    drill:"Below-the-goal-line battles into a quick wraparound or backhand-to-forehand shot — build strength on your inside edges so you can shoot through contact."
+  },
+  {
+    rank:5, name:"Nikita Kucherov", team:"TB · RW", age:32, heightIn:71, weight:180, goals:44, points:130, flex:77,
+    shots:227, shPct:19.4, ppg:19, gwg:6, toi:"20:31", streak:"Point in 17 of 18 games through the heart of the schedule",
+    zones:{slot:25, circle:50, point:25},
+    finish:{top:52, five:16, low:32},
+    stick:"Bauer Vapor Hyperlite / Supreme", curve:"P28/P86 family",
+    grip:0.36, color:"var(--amber)",
+    blurb:"<b>An elite processor of the game.</b> Works the half-wall with patience and vision — his shot is good, but manipulating defenders to set up teammates is the real weapon. Won the Hart Trophy as league MVP this season.",
+    drill:"Half-wall give-and-goes: hold the puck one extra beat to move a defender, then shoot or pass off the same fake. Train the delay, not just the release."
+  }
+];
+
+function stickSVG(p){
+  const stickLen = p.heightIn - 8;
+  const maxLen = Math.max(...players.map(x=>x.heightIn-8));
+  const svgH = 240;
+  const usableH = 200;
+  const px = (stickLen/maxLen)*usableH;
+  const yTop = svgH - px - 20;
+  const yBot = svgH - 20;
+  const gripY = yTop + px*p.grip;
+  return `
+  <svg viewBox="0 0 100 ${svgH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${p.name} stick length diagram">
+    <line x1="50" y1="${yTop}" x2="50" y2="${yBot}" stroke="${p.color}" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 50 ${yBot} q 10 4 16 14" stroke="${p.color}" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <circle cx="50" cy="${yTop}" r="5" fill="var(--cyan)"/>
+    <circle cx="50" cy="${gripY}" r="5" fill="var(--amber)"/>
+  </svg>`;
+}
+
+const rack = document.getElementById('rack');
+players.forEach(p=>{
+  const slot = document.createElement('div');
+  slot.className='stick-slot';
+  slot.innerHTML = `${stickSVG(p)}<div class="stick-name">${p.name}</div><div class="stick-team">${p.team}</div>`;
+  rack.appendChild(slot);
+});
+
+const cards = document.getElementById('cards');
+players.forEach(p=>{
+  const heightFt = Math.floor(p.heightIn/12);
+  const heightRem = p.heightIn%12;
+  const card = document.createElement('div');
+  card.className='card';
+  card.innerHTML = `
+    <div class="rank">${String(p.rank).padStart(2,'0')}</div>
+    <div>
+      <h2>${p.name}</h2>
+      <div class="team">${p.team}</div>
+      <div class="stick-line">${p.stick}</div>
+      <div class="curve-line">${p.curve}</div>
+    </div>
+    <div>
+      <div class="stat-grid">
+        <div class="stat"><span class="num">${p.age}</span><span class="lbl">Age</span></div>
+        <div class="stat"><span class="num">${heightFt}'${heightRem}"</span><span class="lbl">Height</span></div>
+        <div class="stat"><span class="num">${p.weight} lb</span><span class="lbl">Weight</span></div>
+        <div class="stat"><span class="num">${p.goals}</span><span class="lbl">Goals</span></div>
+        <div class="stat"><span class="num">${p.points}</span><span class="lbl">Points</span></div>
+      </div>
+      <div class="stat-grid secondary">
+        <div class="stat"><span class="num">${p.shots}</span><span class="lbl">Shots</span></div>
+        <div class="stat"><span class="num">${p.shPct}%</span><span class="lbl">Shooting %</span></div>
+        <div class="stat"><span class="num">${p.ppg}</span><span class="lbl">PP goals</span></div>
+        <div class="stat"><span class="num">${p.gwg}</span><span class="lbl">Game-winners</span></div>
+        <div class="stat"><span class="num">${p.toi}</span><span class="lbl">Avg. TOI</span></div>
+      </div>
+      <div class="blurb">${p.blurb}</div>
+      <div class="blurb" style="margin-top:8px;"><b>Hot stretch:</b> ${p.streak}</div>
+      <div class="drill"><b>Drill</b>${p.drill}</div>
+    </div>
+  `;
+  cards.appendChild(card);
+});
+
+// Seeded RNG so each player's dot cluster is stable across reloads
+function mulberry32(seed){
+  return function(){
+    seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function netSVG(p){
+  const rand = mulberry32(p.rank * 7919);
+  const total = p.goals;
+  const topCount = Math.round(total * p.finish.top / 100);
+  const fiveCount = Math.round(total * p.finish.five / 100);
+  const lowCount = total - topCount - fiveCount;
+
+  const dots = [];
+  for(let i=0;i<topCount;i++){
+    const side = rand() < 0.5 ? 'l' : 'r';
+    const x = side==='l' ? 32 + rand()*26 : 158 + rand()*26;
+    const y = 30 + rand()*24;
+    dots.push({x,y});
+  }
+  for(let i=0;i<fiveCount;i++){
+    const x = 96 + rand()*24;
+    const y = 100 + rand()*32;
+    dots.push({x,y});
+  }
+  for(let i=0;i<lowCount;i++){
+    const side = rand() < 0.5 ? 'l' : 'r';
+    const x = side==='l' ? 30 + rand()*28 : 156 + rand()*28;
+    const y = 116 + rand()*24;
+    dots.push({x,y});
+  }
+
+  const dotSVG = dots.map(d=>`<circle cx="${d.x.toFixed(1)}" cy="${d.y.toFixed(1)}" r="2.6" fill="${p.color}" opacity="0.78"/>`).join('');
+
+  // Mesh: simple diagonal hatch inside the frame
+  let mesh = '';
+  for(let x=20; x<=200; x+=14){ mesh += `<line x1="${x}" y1="20" x2="${x}" y2="146" stroke="var(--line)" stroke-width="1"/>`; }
+  for(let y=20; y<=146; y+=14){ mesh += `<line x1="20" y1="${y}" x2="200" y2="${y}" stroke="var(--line)" stroke-width="1"/>`; }
+
+  return `
+  <svg viewBox="0 0 220 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${p.name} simulated goal placement">
+    <line x1="20" y1="146" x2="200" y2="146" stroke="var(--ice-dim)" stroke-width="2"/>
+    <g clip-path="url(#netclip-${p.rank})">
+      <clipPath id="netclip-${p.rank}"><rect x="20" y="20" width="180" height="126"/></clipPath>
+      ${mesh}
+    </g>
+    <rect x="20" y="20" width="180" height="126" fill="none" stroke="${p.color}" stroke-width="3" rx="2"/>
+    ${dotSVG}
+  </svg>`;
+}
+
+const netRack = document.getElementById('netRack');
+if(netRack){
+  players.forEach(p=>{
+    const slot = document.createElement('div');
+    slot.className = 'net-slot';
+    slot.innerHTML = `${netSVG(p)}<div class="net-name">${p.name.split(' ').slice(-1)}</div><div class="net-count">${p.goals} goals</div>`;
+    netRack.appendChild(slot);
+  });
+}
+
+const zoneRows = document.getElementById('zoneRows');
+if(zoneRows){
+  players.forEach(p=>{
+    const row = document.createElement('div');
+    row.className = 'zone-row';
+    row.innerHTML = `
+      <div class="zone-name">${p.name.split(' ').slice(-1)}</div>
+      <div class="zone-bar">
+        <div class="zone-seg" style="width:${p.zones.slot}%;background:var(--cyan);">${p.zones.slot}%</div>
+        <div class="zone-seg" style="width:${p.zones.circle}%;background:var(--amber);">${p.zones.circle}%</div>
+        <div class="zone-seg" style="width:${p.zones.point}%;background:var(--red);">${p.zones.point}%</div>
+      </div>
+    `;
+    zoneRows.appendChild(row);
+  });
+}
+
+// Shot profile: shots on goal vs shooting %
+function barChart(items, key, maxOverride, fmt){
+  const max = maxOverride || Math.max(...items.map(x=>x[key]));
+  const rowH = 34;
+  const svgH = items.length*rowH + 10;
+  const bars = items.map((p,i)=>{
+    const y = i*rowH + 8;
+    const w = (p[key]/max) * 220;
+    return `
+      <text x="0" y="${y+13}" fill="var(--ice)" font-family="IBM Plex Mono, monospace" font-size="11">${p.name.split(' ').slice(-1)}</text>
+      <rect x="80" y="${y}" width="${w}" height="16" rx="2" fill="${p.color}" opacity="0.85"/>
+      <text x="${80+w+8}" y="${y+13}" fill="var(--ice-dim)" font-family="IBM Plex Mono, monospace" font-size="11">${fmt(p[key])}</text>
+    `;
+  }).join('');
+  return `<svg viewBox="0 0 320 ${svgH}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:${svgH}px;">${bars}</svg>`;
+}
+
+const shotProfile = document.getElementById('shotProfile');
+if(shotProfile){
+  const byShots = [...players].sort((a,b)=>b.shots-a.shots);
+  const byPct = [...players].sort((a,b)=>b.shPct-a.shPct);
+  const col1 = document.createElement('div');
+  col1.innerHTML = `<div class="section-label" style="border:none;margin-bottom:16px;padding-bottom:0;"><span>Shots on goal</span></div>${barChart(byShots,'shots',null,v=>v)}`;
+  const col2 = document.createElement('div');
+  col2.innerHTML = `<div class="section-label" style="border:none;margin-bottom:16px;padding-bottom:0;"><span>Shooting %</span></div>${barChart(byPct,'shPct',25,v=>v+'%')}`;
+  shotProfile.appendChild(col1);
+  shotProfile.appendChild(col2);
+}
+
+// Stick-fit calculator
+const heightSlider = document.getElementById('calcHeight');
+const weightSlider = document.getElementById('calcWeight');
+const styleSelect = document.getElementById('calcStyle');
+const heightVal = document.getElementById('heightVal');
+const weightVal = document.getElementById('weightVal');
+const calcOutput = document.getElementById('calcOutput');
+
+const styleDrills = {
+  quick:{label:"Quick-release", drill:"One-touch wrist shots off a pass, hands close together, puck off the blade in one motion — no extra stickhandle before you shoot."},
+  power:{label:"Power", drill:"Full-weight-transfer slap shots and one-timers, building the shot into your stride rather than shooting from a stop."},
+  balanced:{label:"Balanced", drill:"Mix catch-and-release wristers with the occasional one-timer — rotate both so neither becomes the only shot you can take under pressure."}
+};
+
+function formatHeight(inches){
+  const ft = Math.floor(inches/12);
+  const rem = inches%12;
+  return `${ft}'${rem}"`;
+}
+
+function renderCalc(){
+  const heightIn = parseInt(heightSlider.value, 10);
+  const weight = parseInt(weightSlider.value, 10);
+  const style = styleSelect.value;
+
+  heightVal.textContent = `${formatHeight(heightIn)} (${heightIn}")`;
+  weightVal.textContent = `${weight} lb`;
+
+  // Stick length: same knob-to-chin rule used in the rack above (height - 8", on skates)
+  const stickLen = heightIn - 8;
+
+  // Flex: common starting-point guideline of ~half body weight, adjusted for shot style
+  const flexMultiplier = style === 'quick' ? 0.42 : style === 'power' ? 0.58 : 0.5;
+  let flex = Math.round((weight * flexMultiplier) / 5) * 5;
+  flex = Math.max(30, Math.min(110, flex));
+
+  // Nearest comparable pro by normalized height + weight distance
+  let closest = null, bestDist = Infinity;
+  players.forEach(p=>{
+    const dH = (p.heightIn - heightIn) / 12; // normalize roughly to feet
+    const dW = (p.weight - weight) / 50;
+    const dist = Math.sqrt(dH*dH + dW*dW);
+    if(dist < bestDist){ bestDist = dist; closest = p; }
+  });
+
+  const drillInfo = styleDrills[style];
+
+  calcOutput.innerHTML = `
+    <div class="calc-result">
+      <span class="num">${stickLen}"</span>
+      <span class="lbl">Recommended stick length</span>
+    </div>
+    <div class="calc-result">
+      <span class="num">~${flex}</span>
+      <span class="lbl">Starting-point flex</span>
+    </div>
+    <div class="calc-match">
+      Closest build in the top 5: <b>${closest.name}</b> (${formatHeight(closest.heightIn)}, ${closest.weight} lb) — runs a ${closest.stick.split('/')[0].trim()} at roughly flex ${closest.flex}.
+    </div>
+    <div class="calc-drill"><b>${drillInfo.label} drill</b>${drillInfo.drill}</div>
+  `;
+}
+
+[heightSlider, weightSlider, styleSelect].forEach(el=>el.addEventListener('input', renderCalc));
+renderCalc();
+
+// All 30+ goal scorers, 2025-26 final regular season
+const goalScorers = [
+  {name:"Nathan MacKinnon", team:"COL", goals:53, points:127, flex:95},
+  {name:"Cole Caufield", team:"MTL", goals:51, points:88, flex:80},
+  {name:"Connor McDavid", team:"EDM", goals:48, points:138, flex:85},
+  {name:"Macklin Celebrini", team:"SJS", goals:45, points:115},
+  {name:"Kirill Kaprizov", team:"MIN", goals:45, points:89, flex:87},
+  {name:"Wyatt Johnston", team:"DAL", goals:45, points:86},
+  {name:"Nikita Kucherov", team:"TB", goals:44, points:130, flex:77},
+  {name:"Cutter Gauthier", team:"ANA", goals:41, points:69},
+  {name:"Alex DeBrincat", team:"DET", goals:41, points:85},
+  {name:"Steven Stamkos", team:"NSH", goals:42, points:66},
+  {name:"Dylan Guenther", team:"UTA", goals:40, points:73},
+  {name:"Tage Thompson", team:"BUF", goals:40, points:81},
+  {name:"Filip Forsberg", team:"NSH", goals:40, points:75},
+  {name:"Jake Guentzel", team:"TB", goals:38, points:88},
+  {name:"Martin Nečas", team:"COL", goals:38, points:100},
+  {name:"Pavel Dorofeyev", team:"VGK", goals:37, points:64},
+  {name:"Adrian Kempe", team:"LAK", goals:36, points:73},
+  {name:"Brandon Hagel", team:"TB", goals:36, points:74},
+  {name:"Mark Scheifele", team:"WPG", goals:36, points:103},
+  {name:"Leon Draisaitl", team:"EDM", goals:35, points:97, flex:95},
+  {name:"Dylan Larkin", team:"DET", goals:34, points:67},
+  {name:"Mika Zibanejad", team:"NYR", goals:34, points:78},
+  {name:"Tim Stützle", team:"OTT", goals:34, points:83},
+  {name:"Alex Tuch", team:"BUF", goals:33, points:66},
+  {name:"Nick Schmaltz", team:"UTA", goals:33, points:74},
+  {name:"Anthony Mantha", team:"PIT", goals:33, points:64},
+  {name:"Brock Nelson", team:"COL", goals:33, points:65},
+  {name:"Drake Batherson", team:"OTT", goals:33, points:71},
+  {name:"Andrei Svechnikov", team:"CAR", goals:31, points:70},
+  {name:"John Tavares", team:"TOR", goals:31, points:71},
+  {name:"Bo Horvat", team:"NYI", goals:31, points:57},
+  {name:"Zach Hyman", team:"EDM", goals:31, points:52},
+  {name:"Alex Ovechkin", team:"WSH", goals:32, points:64, flex:100},
+  {name:"Seth Jarvis", team:"CAR", goals:32, points:66},
+  {name:"Jason Robertson", team:"DAL", goals:45, points:96},
+  {name:"Kyle Connor", team:"WPG", goals:39, points:92},
+  {name:"Morgan Geekie", team:"BOS", goals:39, points:68},
+  {name:"William Nylander", team:"TOR", goals:30, points:79},
+  {name:"Connor Bedard", team:"CHI", goals:30, points:75},
+  {name:"Juraj Slafkovsky", team:"MTL", goals:30, points:73},
+  {name:"Gabriel Vilardi", team:"WPG", goals:30, points:69},
+  {name:"Matt Boldy", team:"MIN", goals:42, points:85},
+  {name:"Tom Wilson", team:"WSH", goals:30, points:62},
+  {name:"Pavel Zacha", team:"BOS", goals:30, points:65},
+].sort((a,b)=>b.goals-a.goals);
+
+function gripStyle(p){
+  const ratio = p.goals / p.points;
+  if(ratio >= 0.54) return {label:"Quick-release", color:"var(--amber)"};
+  if(ratio < 0.46) return {label:"Playmaker-lean", color:"var(--cyan)"};
+  return {label:"Balanced", color:"var(--ice-dim)"};
+}
+
+const goalTableBody = document.getElementById('goalTableBody');
+const teamFilter = document.getElementById('teamFilter');
+const featuredNames = new Set(players.map(p=>p.name));
+
+// Populate team filter from the data itself
+[...new Set(goalScorers.map(p=>p.team))].sort().forEach(team=>{
+  const opt = document.createElement('option');
+  opt.value = team; opt.textContent = team;
+  teamFilter.appendChild(opt);
+});
+
+let sortState = { key:'goals', dir:'desc' };
+
+function sortValue(p, key){
+  if(key === 'rank') return p.goals; // "#" reflects rank-by-goals order
+  if(key === 'grip') return gripStyle(p).label;
+  if(key === 'flex') return p.flex ?? -1; // undocumented flex sorts to the bottom
+  return p[key];
+}
+
+function renderGoalTable(){
+  let rows = goalScorers.filter(p => teamFilter.value === 'all' || p.team === teamFilter.value);
+
+  rows.sort((a,b)=>{
+    const av = sortValue(a, sortState.key), bv = sortValue(b, sortState.key);
+    let cmp;
+    if(typeof av === 'string') cmp = av.localeCompare(bv);
+    else cmp = av - bv;
+    return sortState.dir === 'asc' ? cmp : -cmp;
+  });
+
+  goalTableBody.innerHTML = '';
+  rows.forEach((p,i)=>{
+    const tr = document.createElement('tr');
+    if(featuredNames.has(p.name)) tr.className='top5';
+    const g = gripStyle(p);
+    tr.innerHTML = `<td class="num">${i+1}</td><td>${p.name}</td><td>${p.team}</td><td class="num">${p.goals}</td><td class="num">${p.points}</td><td class="num">${p.flex ? p.flex : '—'}</td><td style="color:${g.color};">${g.label}</td>`;
+    goalTableBody.appendChild(tr);
+  });
+
+  // Update header arrows to reflect current sort
+  document.querySelectorAll('#goalTable th.sortable').forEach(th=>{
+    const arrow = th.querySelector('.sort-arrow');
+    if(th.dataset.sort === sortState.key){
+      arrow.textContent = sortState.dir === 'asc' ? '▲' : '▼';
+    } else {
+      arrow.textContent = '';
+    }
+  });
+}
+
+document.querySelectorAll('#goalTable th.sortable').forEach(th=>{
+  th.addEventListener('click', ()=>{
+    const key = th.dataset.sort;
+    if(sortState.key === key){
+      sortState.dir = sortState.dir === 'asc' ? 'desc' : 'asc';
+    } else {
+      sortState = { key, dir: (key==='name'||key==='team'||key==='grip') ? 'asc' : 'desc' };
+    }
+    renderGoalTable();
+  });
+});
+
+teamFilter.addEventListener('change', renderGoalTable);
+renderGoalTable();
+</script>
+
+<div class="wrap" style="padding-top:0;">
+  <footer>
+    Goals, points, and age reflect final 2025–26 regular-season totals. Shots, shooting %, power-play goals, game-winners, and average time on ice are drawn from the same season's game logs. Heights, weights, and stick flex are drawn from public equipment listings and league bios and can shift over a season as gear deals change — treat exact flex numbers as approximate. Grip-span styling in the rack diagram is an illustrative stand-in, not a measured biomechanical figure.
+  </footer>
+</div>
+</body>
+</html>
